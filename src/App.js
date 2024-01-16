@@ -1,23 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Items from "./components/Items";
 
 function App() {
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      title: "first product",
+      img: "first product img",
+      desc: "Lorem ippsum ",
+      category: "chairs",
+      price: "49.99",
+    },
+    {
+      id: 2,
+      title: "second product",
+      img: "first product img",
+      desc: "Lorem ippsum ",
+      category: "chairs",
+      price: "49.99",
+    },
+    {
+      id: 3,
+      title: "third product",
+      img: "first product img",
+      desc: "Lorem ippsum ",
+      category: "chairs",
+      price: "49.99",
+    },
+    {
+      id: 4,
+      title: "four product",
+      img: "first product img",
+      desc: "Lorem ippsum ",
+      category: "chairs",
+      price: "49.99",
+    },
+    {
+      id: 5,
+      title: "fife product",
+      img: "first product img",
+      desc: "Lorem ippsum ",
+      category: "chairs",
+      price: "49.99",
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Items items={products} />
+
+      <Footer />
     </div>
   );
 }
