@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Items from "./components/Items";
 
 function App() {
+  const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -47,12 +48,23 @@ function App() {
       price: "49.99",
     },
   ]);
+  const addToOrder = (item) => {
+    let isInArray = false;
+    orders.forEach((el) => {
+      if (el.id === item.id) {
+        isInArray = true;
+      }
+    });
+    if (!isInArray) {
+      setOrders([...orders, item]);
+    }
+  };
 
   return (
     <div className="App">
-      <Header />
+      <Header orders={orders} />
 
-      <Items items={products} />
+      <Items items={products} onAdd={addToOrder} />
 
       <Footer />
     </div>

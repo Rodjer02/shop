@@ -9,6 +9,10 @@
   margin: 50px auto;
 }
 
+header{
+  position: relative;
+}
+
 header .logo{
   font-size: 20px;
 }
@@ -32,6 +36,46 @@ header .presentation{
   height: 500px;
   margin: 50px 0;
   background: cyan;
+}
+
+header .shop-cart-button{
+  float: right;
+cursor: pointer;
+transition: color transform 500 ease;
+}
+
+header .shop-cart-button:hover, header .shop-cart-button.active{
+  color: red;
+  transform: scale(1.5);
+  transition:  500 ease;
+}
+
+
+header .shop-cart{
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 450px;
+  background-color: cyan;
+  box-shadow: 0px 0px 8px 6px rgba(34, 60, 80, 0.2);
+  z-index: 1000;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+header .shop-cart .item{
+  width: 100%;
+  float: left;
+  padding: 20px;
+}
+header .shop-cart .item img{
+  width: 70px;
+  float: left;
+  margin-right: 20px;
+}
+header .shop-cart .item h2{
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 footer{
@@ -59,4 +103,17 @@ main{
     width: 100%;
     height: 150px;
     margin-bottom: 20px;
+}
+
+.add-to-card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
