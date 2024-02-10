@@ -8,7 +8,6 @@ export const useOrders = create((set) => ({
     })),
   addToOrders: (item) =>
     set((state) => {
-      console.log(item);
       if (!state.orders.find((order) => order._id === item._id)) {
         return {
           orders: [...state.orders, { ...item, count: 1 }],
