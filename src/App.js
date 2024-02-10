@@ -1,73 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Items from "./components/Items";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
+import ProductsPage from "./pages/ProductsPage";
+import AboutPage from "./pages/AboutPage";
+
+// Create a client
+const queryClient = new QueryClient();
 
 function App() {
-  const [orders, setOrders] = useState([]);
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      title: "first product",
-      img: "first product img",
-      desc: "Lorem ippsum ",
-      category: "chairs",
-      price: "49.99",
-    },
-    {
-      id: 2,
-      title: "second product",
-      img: "first product img",
-      desc: "Lorem ippsum ",
-      category: "chairs",
-      price: "49.99",
-    },
-    {
-      id: 3,
-      title: "third product",
-      img: "first product img",
-      desc: "Lorem ippsum ",
-      category: "chairs",
-      price: "49.99",
-    },
-    {
-      id: 4,
-      title: "four product",
-      img: "first product img",
-      desc: "Lorem ippsum ",
-      category: "chairs",
-      price: "49.99",
-    },
-    {
-      id: 5,
-      title: "fife product",
-      img: "first product img",
-      desc: "Lorem ippsum ",
-      category: "chairs",
-      price: "49.99",
-    },
-  ]);
-  const addToOrder = (item) => {
-    let isInArray = false;
-    orders.forEach((el) => {
-      if (el.id === item.id) {
-        isInArray = true;
-      }
-    });
-    if (!isInArray) {
-      setOrders([...orders, item]);
-    }
-  };
-
   return (
-    <div className="App">
-      <Header orders={orders} />
-
-      <Items items={products} onAdd={addToOrder} />
-
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/about" element={<AboutPage />} />
+            </Route>
+          </Routes>
+        </div>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 

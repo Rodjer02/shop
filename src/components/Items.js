@@ -3,9 +3,9 @@ import Item from "./Item";
 
 function Items({ items, onAdd }) {
   return (
-    <main>
-      {items.map((el) => (
-        <Item key={el.id} item={el} onAdd={onAdd} />
+    <main className="item-list">
+      {items.map((el, key) => (
+        <Item key={key} item={el} onAdd={onAdd} />
       ))}
     </main>
   );

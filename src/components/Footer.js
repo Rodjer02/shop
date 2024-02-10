@@ -1,7 +1,11 @@
 import React from "react";
 
 function Footer() {
-  return <footer>Все права защищены &copy;</footer>;
+  return (
+    <footer>
+      <div className="container">Все права защищены &copy;</div>
+    </footer>
+  );
 }
 
 export default Footer;
